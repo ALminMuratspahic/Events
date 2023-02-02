@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/create_event_sty.css">
+</head>
+<body>
+
+<div class="formbold-main-wrapper">
+
+    <div class="formbold-form-wrapper">
+        <img th:src="@{/images/registeruser.png}">
+        <form action="#" th:action="@{/users/save}" th:object="${user}" method="POST" enctype="multipart/form-data">
+
+            <div class="formbold-input-flex">
+                <div>
+                    <label for="name" class="formbold-form-label">Name:</label>
+                    <input th:field="*{name}" required="true"
+                           type="text"
+                           name="name"
+                           id="name"
+                           placeholder="Enter name"
+                           class="formbold-form-input"
+                    />
+                </div>
+
+                <div>
+                    <label for="lastname" class="formbold-form-label">Last Name:</label>
+                    <input th:field="*{lastname}" required="true"
+                           id="lastname"
+                           type="text"
+                           placeholder="Enter Last Name"
+                           class="formbold-form-input">
+                </div>
+
+            </div>
+
+            <div class="formbold-input-flex">
+                <div>
+                    <label for="email" class="formbold-form-label">Email:</label>
+                    <input th:field="*{email}" required="true"
+                           id="email"
+                           type="text"
+                           placeholder="example@example.com"
+                           class="formbold-form-input">
+                </div>
+            </div>
+            <div class="formbold-mb-3">
+                <label for="password" class="formbold-form-label">Password:</label>
+                <input th:field="*{password}" required="true"
+                       id="password"
+                       type="text"
+                       placeholder="Enter your password"
+                       class="formbold-form-input">
+            </div>
+
+            <button type="submit" class="formbold-btn">Register Now</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

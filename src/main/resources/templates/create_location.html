@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/create_event_sty.css">
+    <title>Create Location</title>
+</head>
+<body>
+
+<div class="formbold-main-wrapper">
+
+    <div class="formbold-form-wrapper">
+        <img th:src="@{/images/locationmain.jpeg}">
+        <form action="#" th:action="@{/locations}" th:object="${location}" method="post"
+              enctype="multipart/form-data">
+
+            <div class="formbold-input-flex">
+                <div>
+                    <label for="locationName" class="formbold-form-label"> Location Name </label>
+                    <input th:field="*{locationName}" required="true"
+                           type="text"
+                           name="locationName"
+                           id="locationName"
+                           placeholder="Location Name"
+                           class="formbold-form-input"
+                    />
+                </div>
+            </div>
+
+            <div class="formbold-mb-3">
+                <label for="details" class="formbold-form-label">
+                    Details
+                </label>
+                <textarea th:field="*{locationDetails}" required="true"
+                          rows="6"
+                          name="details"
+                          id="details"
+                          class="formbold-form-input"
+                ></textarea>
+            </div>
+
+            <div class="formbold-form-file-flex">
+                <label for="upload" class="formbold-form-label">
+                    Upload Photos
+                </label>
+                <input
+                        type="file"
+                        name="image"
+                        id="upload"
+                        class="formbold-form-file"
+                        accept="image/png,image/jpeg"
+                />
+            </div>
+
+            <button type="submit" class="formbold-btn">Create Now</button>
+        </form>
+    </div>
+</div>
+
+
+</body>
+</html>

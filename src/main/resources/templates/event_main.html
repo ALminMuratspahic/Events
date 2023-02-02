@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Home Admin</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/event-home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+
+<div class="topheader">
+    <ul>
+        <div sec:authorize="hasAuthority('admin')">
+            <li><a href="/category/createCategory" class="btn btn-primary">Create category</a></li>
+            <li><a href="/locations/create-location" class="btn btn-primary">Create Location</a></li>
+            <li><a href="/events/create-event" class="btn btn-primary">Create event</a></li>
+            <li><a href="/locations" class="btn btn-primary">See Locations</a></li>
+            <li><a href="/users" class="btn btn-primary">See Users</a></li>
+
+        </div>
+
+        <li>
+            <form action="#" th:action="@{/events/search}" method="get">
+                <input type="text" placeholder="Location or Category" name="categoryTitle">
+                <button class="btn btn-default btn-robot" type="submit">Search</button>
+            </form>
+        </li>
+        <div sec:authorize="isAuthenticated()">
+            <li><a href="/logout" class="btn btn-warning">Log out</a></li>
+        </div>
+
+        <div sec:authorize="!isAuthenticated()">
+            <li><a href="/users/register-user" class="btn btn-success">Register user</a></li>
+            <li><a href="users/login" class="btn btn-info">Log in</a></li>
+        </div>
+
+        <li><span th:text="${#authentication.getName()}"></span></li>
+    </ul>
+</div>
+
+<br><br>
+<section id="mu-about" th:each="event:${events}">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-about-area">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mu-about-left">
+                                <hr>
+                                <img th:src="'data:image/jpeg;base64,'+ ${imgUtil.getImageData(event.location.imageData)}"
+                                     class="image.round" alt="Cinque Terre">
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mu-about-right">
+                                <hr>
+                                <h2 th:text="${event.titleEvent}"></h2>
+                                <h4 th:text="${event.location.locationName}"></h4>
+                                <p th:text="${event.eventDetails}"></p>
+
+                                <h5 th:text="${event.eventDate}"></h5>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<html xmlns:th="http://www.thymleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/create_event_sty.css">
+    <title>Create Category</title>
+</head>
+<body>
+
+<div class="formbold-main-wrapper">
+    <div class="formbold-form-wrapper">
+        <img th:src="@{/images/category-manager-640x230.jpg}">
+        <form action="#" th:action="@{/category}" th:object="${category}" method="post">
+
+            <div class="formbold-input-flex">
+                <div>
+                    <label for="title" class="formbold-form-label"> Category Title</label>
+                    <input th:field="*{title}" required="true"
+                           type="text"
+                           name="title"
+                           id="title"
+                           placeholder="Category Title"
+                           class="formbold-form-input"
+                    />
+                </div>
+            </div>
+            <button type="submit" class="formbold-btn">Create Now</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
