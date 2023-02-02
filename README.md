@@ -4,6 +4,7 @@ NOTE: STILL WORKING ON.
 What is done:
 
 Admin can: make Categories,Locations,Events,see all users,delete users...
+
 User can: See all events,Search for events base on Category and Location.
 
 1. Create Category for Events
