@@ -1,15 +1,14 @@
 package com.SistemZaPracenjeLokalnihDogadjaja.security.userSecurity;
 
-import com.SistemZaPracenjeLokalnihDogadjaja.model.Authority;
 import com.SistemZaPracenjeLokalnihDogadjaja.model.User;
-import com.SistemZaPracenjeLokalnihDogadjaja.security.authority.MyAuthority;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.List;
 
 @RequiredArgsConstructor
 public class MyUserDetails implements UserDetails {
@@ -18,11 +17,13 @@ public class MyUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        Set<Authority> authorities = user.getAuthorities();
-
-        return authorities.stream()
-                .map(MyAuthority::new)
-                .collect(Collectors.toList());
+        List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+        grantedAuthorities.add(new SimpleGrantedAuthority(user.getRole().name()));
+        user.getRole().getAuthorities()
+                .stream()
+                .map(auth -> new SimpleGrantedAuthority(auth.getPermission()))
+                .forEach(grantedAuthorities::add);
+        return grantedAuthorities;
     }
 
     @Override

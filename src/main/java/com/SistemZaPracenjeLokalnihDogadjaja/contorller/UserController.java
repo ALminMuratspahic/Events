@@ -1,8 +1,6 @@
 package com.SistemZaPracenjeLokalnihDogadjaja.contorller;
 
-import com.SistemZaPracenjeLokalnihDogadjaja.model.Authority;
 import com.SistemZaPracenjeLokalnihDogadjaja.model.User;
-import com.SistemZaPracenjeLokalnihDogadjaja.services.AuthorityService;
 import com.SistemZaPracenjeLokalnihDogadjaja.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +18,6 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-    @Autowired
-    private AuthorityService authorityService;
 
 
     @GetMapping("/login")
@@ -32,9 +28,7 @@ public class UserController {
     @GetMapping("/register-user")
     public String registerUser(Model model) {
         User user = new User();
-        List<Authority> authorities = authorityService.findAllAuthority();
         model.addAttribute("user", user);
-        model.addAttribute("authorities", authorities);
         return "register_user";
     }
 

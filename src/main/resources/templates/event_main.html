@@ -15,7 +15,7 @@
 
 <div class="topheader">
     <ul>
-        <div sec:authorize="hasAuthority('admin')">
+        <div sec:authorize="hasAuthority('ROLE_ADMIN')">
             <li><a href="/category/createCategory" class="btn btn-primary">Create category</a></li>
             <li><a href="/locations/create-location" class="btn btn-primary">Create Location</a></li>
             <li><a href="/events/create-event" class="btn btn-primary">Create event</a></li>

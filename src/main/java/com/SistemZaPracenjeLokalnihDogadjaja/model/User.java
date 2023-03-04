@@ -1,16 +1,12 @@
 package com.SistemZaPracenjeLokalnihDogadjaja.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.SistemZaPracenjeLokalnihDogadjaja.security.roles.Role;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-
-import java.util.Set;
+import lombok.Data;
 
 @Entity
 @Table(name = "users")
-@Getter
-@Setter
+@Data
 public class User {
 
     @Id
@@ -20,12 +16,7 @@ public class User {
     private String lastname;
     private String password;
     private String email;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_authority",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "authority_id")
-    )
-    @JsonIgnore
-    private Set<Authority> authorities;
 }

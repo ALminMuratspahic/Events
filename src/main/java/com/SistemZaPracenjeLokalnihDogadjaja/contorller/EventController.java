@@ -65,7 +65,6 @@ public class EventController {
         model.addAttribute("events", events);
         model.addAttribute("imgUtil", new ImageUtil());
         model.addAttribute("categories", categories);
-        System.out.println(events);
         return "event_main";
     }
 

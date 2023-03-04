@@ -15,9 +15,9 @@ public class MyConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests(auth -> {
-                    auth.requestMatchers("/css/**", "/js/**", "/images/**", "/font-awesome/**","/events/**",
-                            "/users/save", "/users/login","/users/register-user").permitAll();
-                    auth.requestMatchers("/delete-user/**").hasAuthority("admin");
+                    auth.requestMatchers("/css/**", "/js/**", "/images/**", "/font-awesome/**", "/events/**",
+                            "/users/save", "/users/login", "/users/register-user").permitAll();
+                    auth.requestMatchers("/delete-user/**").hasRole("ADMIN");
                     auth.anyRequest().authenticated();
                 })
                 .formLogin(form -> {
