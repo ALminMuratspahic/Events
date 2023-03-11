@@ -53,15 +53,19 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mu-about-left">
+
                                 <hr>
                                 <img th:src="'data:image/jpeg;base64,'+ ${imgUtil.getImageData(event.location.imageData)}"
                                      class="image.round" alt="Cinque Terre">
+                                <a th:href="@{'/comments/'+${event.id}}" class="btn btn-light" methods="get">All Comments (<span th:text="${event.comments.size}"></span>)</a>
+                                <a th:href="@{'events/comment/'+${event.id}}" class="btn btn-primary">Comment</a>
 
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mu-about-right">
                                 <hr>
+                                <a sec:authorize="hasAuthority('ROLE_ADMIN')" th:href="@{'/events/'+${event.id}}" class="btn btn-warning">Edit</a>
                                 <h2 th:text="${event.titleEvent}"></h2>
                                 <h4 th:text="${event.location.locationName}"></h4>
                                 <p th:text="${event.eventDetails}"></p>

@@ -7,8 +7,7 @@ import java.util.Set;
 
 @Entity
 @Table
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Location {

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Comments</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/comment.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<a class="btn btn-light" href="/events">Home</a>
+
+<div class="row d-flex justify-content-center mt-100 mb-100">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body text-center">
+
+                <h4 class="card-title">Latest Comments</h4>
+            </div>
+            <div class="comment-widgets" th:each="comment: ${comments}">
+
+                <div class="d-flex flex-row comment-row m-t-0">
+                    <div class="p-2"><img src="https://i.imgur.com/Ur43esv.jpg" alt="user" width="50"
+                                          class="rounded-circle"></div>
+                    <div class="comment-text w-100">
+                        <h6 th:text="${comment.user.name}" class="font-medium"></h6> <span th:text="${comment.message}"
+                                                                                           class="m-b-15 d-block"></span>
+                        <div class="comment-footer">
+                            <a sec:authorize="hasAuthority('ROLE_ADMIN')" th:href="@{'/comments/del/'+${comment.id}}"
+                               class="btn btn-danger btn-sm">Delete</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

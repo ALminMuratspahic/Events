@@ -3,10 +3,12 @@ package com.SistemZaPracenjeLokalnihDogadjaja.model;
 import com.SistemZaPracenjeLokalnihDogadjaja.security.roles.Role;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 
 @Entity
 @Table(name = "users")
 @Data
+@ToString
 public class User {
 
     @Id
@@ -18,5 +20,6 @@ public class User {
     private String email;
     @Enumerated(EnumType.STRING)
     private Role role;
+
 
 }

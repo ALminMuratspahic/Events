@@ -15,7 +15,6 @@ public class CategoryController {
 
     @Autowired
     private CategoryService categoryService;
-
     @GetMapping("/createCategory")
     public String createCategory(Model model) {
         Category category = new Category();

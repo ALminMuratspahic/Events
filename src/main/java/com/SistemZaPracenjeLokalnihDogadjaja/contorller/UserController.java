@@ -1,6 +1,7 @@
 package com.SistemZaPracenjeLokalnihDogadjaja.contorller;
 
 import com.SistemZaPracenjeLokalnihDogadjaja.model.User;
+import com.SistemZaPracenjeLokalnihDogadjaja.security.roles.Role;
 import com.SistemZaPracenjeLokalnihDogadjaja.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,12 +41,13 @@ public class UserController {
     @GetMapping
     public String findAllUsers(Model model) {
         List<User> users = userService.findAllUsers();
-        model.addAttribute("users",users);
+        model.addAttribute("users", users);
         return "users";
     }
 
     @PostMapping("/save")
     public String saveUser(@ModelAttribute User user) {
+        user.setRole(Role.ROLE_USER);
         userService.saveUser(user);
         return "redirect:/events";
     }

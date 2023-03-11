@@ -20,11 +20,11 @@ public class LocationController {
     private LocationService locationService;
 
     @GetMapping
-    public String allLocation(Model model) {
+    public String getAllLocations(Model model) {
         List<Location> locations = locationService.findAllLocation();
         model.addAttribute("imgUtil", new ImageUtil());
         model.addAttribute("locations", locations);
-        return "allLocation";
+        return "locations";
     }
 
     @PostMapping(consumes = {"multipart/form-data"})
