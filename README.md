@@ -21,7 +21,8 @@ User can: See all events,Search for events base on Category and Location.
 
 
 5. After user log-in:
-![eventHomeUserSee](https://user-images.githubusercontent.com/82029922/216387301-674793ce-34ea-4133-b236-6a63084dd1d0.jpg)
+![userManiView](https://user-images.githubusercontent.com/82029922/224486531-34aa6520-32fe-4a58-a775-3e1a1b354754.jpg)
+
 
 6. Admin can see all Locations and all Users
 ![AllLocaton](https://user-images.githubusercontent.com/82029922/216387600-8ed22b45-cc5d-4005-b241-bb89a4ef3f13.jpg)
