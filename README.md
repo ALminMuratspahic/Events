@@ -3,9 +3,9 @@ NOTE: STILL WORKING ON.
 
 What is done:
 
-Admin can: make Categories,Locations,Events,see all users,delete users...
+Admin can: make Categories, Locations, Events, Edit Event, Delete Comments, see all users, delete users, etc.
 
-User can: See all events,Search for events base on Category and Location.
+User can: See all events, Post Comment on Event, Search for events base on Category and Location, etc.
 
 1. Create Category for Events
 ![createCategory](https://user-images.githubusercontent.com/82029922/216385739-2ca266ad-a689-4c51-9396-95c768a9b27e.jpg)
