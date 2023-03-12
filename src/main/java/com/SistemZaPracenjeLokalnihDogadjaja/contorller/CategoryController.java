@@ -2,7 +2,7 @@ package com.SistemZaPracenjeLokalnihDogadjaja.contorller;
 
 import com.SistemZaPracenjeLokalnihDogadjaja.model.Category;
 import com.SistemZaPracenjeLokalnihDogadjaja.services.CategoryService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,11 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/category")
+@RequiredArgsConstructor
 public class CategoryController {
 
-    @Autowired
-    private CategoryService categoryService;
-    @GetMapping("/createCategory")
+    private final CategoryService categoryService;
+
+    @GetMapping("/create")
     public String createCategory(Model model) {
         Category category = new Category();
         model.addAttribute("category", category);

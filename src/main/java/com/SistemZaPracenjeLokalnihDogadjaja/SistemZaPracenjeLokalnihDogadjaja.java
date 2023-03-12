@@ -7,6 +7,7 @@ public class SistemZaPracenjeLokalnihDogadjaja {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SistemZaPracenjeLokalnihDogadjaja.class, args);
+
 	}
 
 }

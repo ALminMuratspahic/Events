@@ -3,6 +3,7 @@ package com.SistemZaPracenjeLokalnihDogadjaja.contorller;
 import com.SistemZaPracenjeLokalnihDogadjaja.myutils.ImageUtil;
 import com.SistemZaPracenjeLokalnihDogadjaja.model.Location;
 import com.SistemZaPracenjeLokalnihDogadjaja.services.LocationService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,10 +15,10 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/locations")
+@RequiredArgsConstructor
 public class LocationController {
 
-    @Autowired
-    private LocationService locationService;
+    private final LocationService locationService;
 
     @GetMapping
     public String getAllLocations(Model model) {
@@ -35,7 +36,7 @@ public class LocationController {
         return "redirect:/events";
     }
 
-    @GetMapping("/create-location")
+    @GetMapping("/create")
     public String createLocation(Model model) {
         Location location = new Location();
         model.addAttribute("location", location);

@@ -2,35 +2,26 @@ package com.SistemZaPracenjeLokalnihDogadjaja.contorller;
 
 import com.SistemZaPracenjeLokalnihDogadjaja.model.*;
 import com.SistemZaPracenjeLokalnihDogadjaja.myutils.ImageUtil;
-
 import com.SistemZaPracenjeLokalnihDogadjaja.services.*;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller()
 @RequestMapping("/events")
+@RequiredArgsConstructor
 public class EventController {
-    @Autowired
-    private EventService eventService;
-    @Autowired
-    private LocationService locationService;
-    @Autowired
-    private CategoryService categoryService;
-    @Autowired
-    private CommentService commentService;
 
-    @Autowired
-    private UserService userService;
+    private final EventService eventService;
+
+    private final LocationService locationService;
+
+    private final CategoryService categoryService;
 
     @GetMapping
     public String eventsHome(Model model) {
@@ -40,7 +31,7 @@ public class EventController {
         return "event_main";
     }
 
-    @GetMapping("/create-event")
+    @GetMapping("/create")
     public String createEvents(Model model) {
         Events events = new Events();
         List<Location> locations = locationService.findAllLocation();
@@ -83,28 +74,6 @@ public class EventController {
         model.addAttribute("locations", locationService.findAllLocation());
         model.addAttribute("categories", categories);
         return modelAndView;
-    }
-
-    @PostMapping("/comment/{id}")
-    public String postComment(@ModelAttribute(name = "comment") Comment comment, @PathVariable int id) {
-        Events event = eventService.findById(id);
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User userByEmail = userService.findUserByEmail(authentication.getName());
-        comment.setEvents(event);
-        comment.setUser(userByEmail);
-        event.getComments().add(comment);
-        commentService.saveComment(comment);
-        eventService.saveEvents(event);
-        return "redirect:/events";
-    }
-
-    @GetMapping("/comment/{id}")
-    public String makeComment(Model model, @PathVariable(name = "id") int id) {
-        Comment comment = new Comment();
-        Events event = eventService.findById(id);
-        model.addAttribute("comment", comment);
-        model.addAttribute("event", event);
-        return "make_comment";
     }
 
 

@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<form action="#" th:action="@{'/events/comment/'+${event.id}}" th:object="${comment}" method="post">
+<form action="#" th:action="@{'/comments/'+${event.id}}" th:object="${comment}" method="post">
     <div><textarea th:field="*{message}"
                    class="form-control" rows="12"
                    style="margin-top: 10px;" placeholder="Comment..."

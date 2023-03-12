@@ -15,14 +15,18 @@ import java.util.List;
 @Entity
 @Table
 public class Events {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String titleEvent;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate eventDate;
+
     private String eventDetails;
-    //private byte[] imageEvent;
+
     @ManyToOne
     @JoinColumn(name = "location_id")
     private Location location;
@@ -31,7 +35,7 @@ public class Events {
     @JoinColumn(name = "category_id ")
     private Category category;
 
-    @OneToMany(mappedBy = "events")
+    @OneToMany(mappedBy = "events", cascade = CascadeType.MERGE)
     private List<Comment> comments;
 
 

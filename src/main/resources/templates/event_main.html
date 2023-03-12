@@ -16,9 +16,9 @@
 <div class="topheader">
     <ul>
         <div sec:authorize="hasAuthority('ROLE_ADMIN')">
-            <li><a href="/category/createCategory" class="btn btn-primary">Create category</a></li>
-            <li><a href="/locations/create-location" class="btn btn-primary">Create Location</a></li>
-            <li><a href="/events/create-event" class="btn btn-primary">Create event</a></li>
+            <li><a href="/category/create" class="btn btn-primary">Create category</a></li>
+            <li><a href="/locations/create" class="btn btn-primary">Create Location</a></li>
+            <li><a href="/events/create" class="btn btn-primary">Create event</a></li>
             <li><a href="/locations" class="btn btn-primary">See Locations</a></li>
             <li><a href="/users" class="btn btn-primary">See Users</a></li>
 
@@ -35,7 +35,7 @@
         </div>
 
         <div sec:authorize="!isAuthenticated()">
-            <li><a href="/users/register-user" class="btn btn-success">Register user</a></li>
+            <li><a href="/users/register" class="btn btn-success">Register user</a></li>
             <li><a href="users/login" class="btn btn-info">Log in</a></li>
         </div>
 
@@ -53,28 +53,26 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mu-about-left">
-
                                 <hr>
                                 <img th:src="'data:image/jpeg;base64,'+ ${imgUtil.getImageData(event.location.imageData)}"
                                      class="image.round" alt="Cinque Terre">
-                                <a th:href="@{'/comments/'+${event.id}}" class="btn btn-light" methods="get">All Comments (<span th:text="${event.comments.size}"></span>)</a>
-                                <a th:href="@{'events/comment/'+${event.id}}" class="btn btn-primary">Comment</a>
-
+                                <a th:href="@{'/comments/'+${event.id}}" class="btn btn-light" methods="get">All
+                                    Comments (<span th:text="${event.comments.size}"></span>)</a>
+                                <a th:href="@{'/comments/event/'+${event.id}}" class="btn btn-primary">Comment</a>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mu-about-right">
                                 <hr>
-                                <a sec:authorize="hasAuthority('ROLE_ADMIN')" th:href="@{'/events/'+${event.id}}" class="btn btn-warning">Edit</a>
+                                <a sec:authorize="hasAuthority('ROLE_ADMIN')" th:href="@{'/events/'+${event.id}}"
+                                   class="btn btn-warning">Edit</a>
                                 <h2 th:text="${event.titleEvent}"></h2>
                                 <h4 th:text="${event.location.locationName}"></h4>
                                 <p th:text="${event.eventDetails}"></p>
-
                                 <h5 th:text="${event.eventDate}"></h5>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
