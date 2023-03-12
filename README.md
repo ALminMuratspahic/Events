@@ -3,9 +3,9 @@ NOTE: STILL WORKING ON.
 
 What is done:
 
-Admin can: make Categories,Locations,Events,see all users,delete users...
+Admin can: make Categories, Locations, Events, Edit Event, Delete Comments, see all users, delete users, etc.
 
-User can: See all events,Search for events base on Category and Location.
+User can: See all events, Post Comment on Event, Search for events base on Category and Location, etc.
 
 1. Create Category for Events
 ![createCategory](https://user-images.githubusercontent.com/82029922/216385739-2ca266ad-a689-4c51-9396-95c768a9b27e.jpg)
@@ -17,10 +17,12 @@ User can: See all events,Search for events base on Category and Location.
 ![createEvent](https://user-images.githubusercontent.com/82029922/216385934-912e68ab-eaef-4184-a25e-1b2e30e1a3ab.jpg)
 
 4. After admin log-in:
-![eventHomeAdminSee](https://user-images.githubusercontent.com/82029922/216387062-b450bb55-8a6d-4c3b-be7d-75a87ae8860b.jpg)
+![AdminMainView](https://user-images.githubusercontent.com/82029922/224486259-c0ab32a1-82c5-44eb-8827-0c7f9eb855a7.jpg)
+
 
 5. After user log-in:
-![eventHomeUserSee](https://user-images.githubusercontent.com/82029922/216387301-674793ce-34ea-4133-b236-6a63084dd1d0.jpg)
+![userManiView](https://user-images.githubusercontent.com/82029922/224486531-34aa6520-32fe-4a58-a775-3e1a1b354754.jpg)
+
 
 6. Admin can see all Locations and all Users
 ![AllLocaton](https://user-images.githubusercontent.com/82029922/216387600-8ed22b45-cc5d-4005-b241-bb89a4ef3f13.jpg)
@@ -34,4 +36,7 @@ User can: See all events,Search for events base on Category and Location.
 
 9. User in DB,password is encoded.
 ![usersInDB](https://user-images.githubusercontent.com/82029922/216389085-dcc05d6f-2f5f-43a2-8618-9ce684ed1b7a.jpg)
+
+10.Comment section: Admin has option to Delete a Comment
+![AdminCommentView](https://user-images.githubusercontent.com/82029922/224486356-3ae6f341-4692-40cf-bc49-d4dc69e38a17.jpg)
 
