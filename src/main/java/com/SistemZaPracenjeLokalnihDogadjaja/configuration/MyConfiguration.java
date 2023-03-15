@@ -19,12 +19,10 @@ public class MyConfiguration {
                     auth.requestMatchers("/users", "/users/delete/**", "/events/**", "/locations/**", "/category/**").hasRole("ADMIN");
                     auth.anyRequest().authenticated();
                 })
-                .formLogin(form -> {
-                    form.loginPage("/users/login")
-                            .usernameParameter("email")
-                            .defaultSuccessUrl("/events", true)
-                            .permitAll();
-                })
+                .formLogin(form -> form.loginPage("/users/login")
+                        .usernameParameter("email")
+                        .defaultSuccessUrl("/events", true)
+                        .permitAll())
                 .httpBasic()
                 .and()
                 .logout()

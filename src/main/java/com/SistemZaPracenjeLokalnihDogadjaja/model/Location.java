@@ -2,7 +2,6 @@ package com.SistemZaPracenjeLokalnihDogadjaja.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.util.Set;
 
 @Entity
@@ -20,6 +19,7 @@ public class Location {
     private String locationDetails;
 
     @Lob
+    @Column(columnDefinition = "MEDIUMBLOB")
     private byte[] imageData;
 
     @OneToMany(mappedBy = "location")

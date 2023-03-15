@@ -10,13 +10,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ConcurrentModel;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+
 
 @Controller
 @RequiredArgsConstructor
@@ -26,20 +26,21 @@ public class CommentController {
     private final CommentService commentService;
     private final EventService eventService;
     private final UserService userService;
+
     @GetMapping("/{id}")
     public String getCommentByEvent(@PathVariable(name = "id") int id, Model model) {
         List<Comment> commentByEvent = commentService.findCommentByEventId(id);
+        Events event = eventService.findById(id);
         model.addAttribute("comments", commentByEvent);
+        model.addAttribute("event", event);
         return "comment";
     }
 
     @GetMapping("/del/{id}")
     public String deleteComment(@PathVariable(name = "id") Long id) {
-
         Comment comment = commentService.findById(id);
         int eventId = comment.getEvents().getId();
-        commentService.deleteCommentById(id);;
-        //commentService.deleteComment(comment);
+        commentService.deleteCommentById(id);
         return "redirect:/comments/" + eventId;
     }
 
@@ -48,11 +49,13 @@ public class CommentController {
         Events event = eventService.findById(eventId);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User userByEmail = userService.findUserByEmail(authentication.getName());
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("MMM dd, YYYY, HH:mm");
+        comment.setDateOfComment(dateTimeFormatter.format(LocalDateTime.now()));
         comment.setEvents(event);
         comment.setUser(userByEmail);
         event.getComments().add(comment);
         eventService.saveEvents(event);
-        return "redirect:/events";
+        return "redirect:/comments/" + eventId;
     }
 
     @GetMapping("/event/{eventId}")

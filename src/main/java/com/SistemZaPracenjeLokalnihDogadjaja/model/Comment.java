@@ -1,9 +1,10 @@
 package com.SistemZaPracenjeLokalnihDogadjaja.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.ToString;
+
+import java.time.LocalDateTime;
+
 
 @Entity
 @Data
@@ -11,8 +12,10 @@ public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column(columnDefinition = "TEXT")
     private String message;
+
+    private String dateOfComment;
 
     @ManyToOne()
     @JoinColumn(name = "event_id")

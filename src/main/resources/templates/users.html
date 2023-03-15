@@ -1,58 +1,51 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="css/home-sty.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/home-sty.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 <body>
 <div class="topheader">
-  <ul>
-    <li><a href="/locations" class="btn btn-primary">See Locations</a></li>
-    <li><a href="/events" class="btn btn-primary">See Events</a></li>
-    <li><a href="logout" class="btn btn-primary">Log out</a></li>
-  </ul>
+    <ul>
+        <li><a href="/locations" class="btn btn-primary">See Locations</a></li>
+        <li><a href="/events" class="btn btn-primary">See Events</a></li>
+        <li><a href="logout" class="btn btn-primary">Log out</a></li>
+    </ul>
 </div>
 <br>
 
 
-<table class="table table-striped" >
-  <thead>
-  <tr>
-    <td>User id:</td>
-    <td>Name:</td>
-    <td>Last Name:</td>
-    <td>User email:</td>
-    <td>Delete User:</td>
-  </tr>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <td>User id:</td>
+        <td>Name:</td>
+        <td>Last Name:</td>
+        <td>User email:</td>
+        <td>Delete User:</td>
+    </tr>
 
-  </thead>
+    </thead>
 
-  <tbody th:each="user:${users}">
-  <tr>
-    <td th:text="${user.id}">Id</td>
-    <td th:text="${user.name}">Name</td>
-    <td th:text="${user.lastname}">Last Name</td>
-    <td th:text="${user.email}">Email</td>
-    <td th:text="${user.role}">Email</td>
-    <td>
-      <!--
-      <form action="#" th:action="@{'users/'+${user.id}}" th:method="delete">
-        <button type="submit">Delete</button>
-      </form>
-      -->
-      <a th:href="@{'users/delete/'+${user.id}}" class="btn btn-danger" method="delete">Delete</a>
+    <tbody th:each="user:${users}">
+    <tr>
+        <td th:text="${user.id}">Id</td>
+        <td th:text="${user.name}">Name</td>
+        <td th:text="${user.lastname}">Last Name</td>
+        <td th:text="${user.email}">Email</td>
+        <td th:text="${user.role}">Email</td>
+        <td>
+            <a th:href="@{'users/delete/'+${user.id}}" class="btn btn-danger" method="delete">Delete</a>
+        </td>
+    </tr>
 
-
-    </td>
-  </tr>
-
-  </tbody>
+    </tbody>
 
 </table>
 

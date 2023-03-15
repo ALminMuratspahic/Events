@@ -20,6 +20,7 @@
             <div class="card-body text-center">
 
                 <h4 class="card-title">Latest Comments</h4>
+                <a class="btn btn-primary" th:href="@{'/comments/event/'+${event.id}}">Comment...</a>
             </div>
             <div class="comment-widgets" th:each="comment: ${comments}">
 
@@ -31,13 +32,14 @@
                                                                                            class="m-b-15 d-block"></span>
                         <div class="comment-footer">
                             <a sec:authorize="hasAuthority('ROLE_ADMIN')" th:href="@{'/comments/del/'+${comment.id}}"
-                               class="btn btn-danger btn-sm">Delete</a></div>
+                               class="btn btn-danger btn-sm">Delete</a> <span class="text-muted float-right" th:text="${comment.dateOfComment}" ></span></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 
 </body>
 </html>
