@@ -38,5 +38,6 @@ User can: See all events, Post Comment on Event, Search for events base on Categ
 ![usersInDB](https://user-images.githubusercontent.com/82029922/216389085-dcc05d6f-2f5f-43a2-8618-9ce684ed1b7a.jpg)
 
 10.Comment section: Admin has option to Delete a Comment
-![AdminCommentView](https://user-images.githubusercontent.com/82029922/224486356-3ae6f341-4692-40cf-bc49-d4dc69e38a17.jpg)
+![admincommenntView](https://user-images.githubusercontent.com/82029922/225377598-e229f1ae-5b4d-4737-b6f0-7af7e3b236aa.jpg)
+
 
