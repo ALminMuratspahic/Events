@@ -4,6 +4,7 @@ import com.SistemZaPracenjeLokalnihDogadjaja.model.User;
 import com.SistemZaPracenjeLokalnihDogadjaja.security.roles.Role;
 import com.SistemZaPracenjeLokalnihDogadjaja.services.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -28,15 +29,14 @@ public class UserController {
         model.addAttribute("user", user);
         return "register_user";
     }
-/*
+
     @GetMapping("/{id}")
     public User findUserById(@PathVariable(name = "id") long id) {
         return userService.findUserById(id);
     }
 
- */
-
     @GetMapping
+    @PreAuthorize(value = "ROLE_ADMIN")
     public String findAllUsers(Model model) {
         List<User> users = userService.findAllUsers();
         model.addAttribute("users", users);

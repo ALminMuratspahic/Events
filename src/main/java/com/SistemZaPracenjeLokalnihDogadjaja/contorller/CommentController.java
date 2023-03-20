@@ -56,6 +56,7 @@ public class CommentController {
         event.getComments().add(comment);
         eventService.saveEvents(event);
         return "redirect:/comments/" + eventId;
+
     }
 
     @GetMapping("/event/{eventId}")
