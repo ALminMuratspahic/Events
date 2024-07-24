@@ -1,18 +1,16 @@
 name: Build
-
 on:
   push:
     branches:
-      - master
-
-
+      - main # the name of your main branch
+  pull_request:
+    types: [opened, synchronize, reopened]
 jobs:
   build:
-    name: Build and analyze
+    name: Build
     runs-on: ubuntu-latest
-    
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v2
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: Set up JDK 17
@@ -35,4 +33,4 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=ALminMuratspahic_Events_fd202f9d-e70d-4434-b825-447a4d149493 -Dsonar.projectName='Events'
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
